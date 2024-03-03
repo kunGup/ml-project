@@ -10,6 +10,8 @@ application=Flask(__name__)
 
 app=application
 
+app.static_folder = 'static'
+
 ## Route for a home page
 
 @app.route('/')
@@ -22,7 +24,7 @@ def predict_datapoint():
         return render_template('home.html')
     else:
         logging.info("converting request data into dataframe to get predictions from the model")
-        
+
         data=CustomData(
             gender=request.form.get('gender'),
             race_ethnicity=request.form.get('ethnicity'),
